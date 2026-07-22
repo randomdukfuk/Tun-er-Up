@@ -50,6 +50,9 @@ Open CMD as administrator and enter the commands below to disable the service. [
   ```bat
   reg add "HKLM\SYSTEM\CurrentControlSet\Services\CDPUserSvc" /v "Start" /t REG_DWORD /d "4" /f
   ```
+
+> [!IMPORTANT]
+> To prevent unexpected breakage and problems due to service dependency errors, assess the other services that depend on the service you want to disable. This can be done by opening CMD as administrator then typing ``sc EnumDepend <service>`` which describes the services that rely on the service you want to disable. These services should be disabled to avoid dependency errors. If you can't disable them (e.g. because you need them), then you have no choice but to leave the service you wanted to disable initially enabled.
   
 
 # Extras
