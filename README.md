@@ -37,13 +37,15 @@ Open CMD as administrator and enter the commands below to build the registry fil
     ```bat
     >> "C:\ets-disable.reg" echo Windows Registry Editor Version 5.00 && >> "C:\ets-disable.reg" echo. && >> "C:\ets-disable.reg" echo [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger]
     ```
-# CDP service
-Open CMD as administrator and enter the commands below to disable the service
-- ``CDP``
+# Connected Devices Platform Service
+Open CMD as administrator and enter the commands below to disable the service. [more info](https://github.com/SmtimesIWndr/gdid-reversal)
+- ``CDPSvc``
 
   ```bat
   reg add "HKLM\SYSTEM\CurrentControlSet\Services\CDPSvc" /v "Start" /t REG_DWORD /d "4" /f
   ```
+  
+- ``CDPUserSvc``
   
   ```bat
   reg add "HKLM\SYSTEM\CurrentControlSet\Services\CDPUserSvc" /v "Start" /t REG_DWORD /d "4" /f
