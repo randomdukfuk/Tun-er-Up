@@ -37,8 +37,6 @@ Open CMD as administrator and enter the commands below to build the registry fil
     ```bat
     >> "C:\ets-disable.reg" echo Windows Registry Editor Version 5.00 && >> "C:\ets-disable.reg" echo. && >> "C:\ets-disable.reg" echo [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger]
     ```
-> [!CAUTION]
-> 📊 **Do NOT** blindly follow the recommendations in this section. **Do** benchmark the specified changes to ensure they result in positive performance scaling, as every system behaves differently and changes could unintentionally degrade performance 
 # Connected Devices Platform Service
 Open CMD as administrator and enter the commands below to disable the service. [more info](https://github.com/SmtimesIWndr/gdid-reversal)
 - ``CDPSvc``
