@@ -36,24 +36,7 @@ Open CMD as administrator and enter the commands below to build the registry fil
 
     ```bat
     >> "C:\ets-disable.reg" echo Windows Registry Editor Version 5.00 && >> "C:\ets-disable.reg" echo. && >> "C:\ets-disable.reg" echo [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger]
-    ```
-# Connected Devices Platform Service
-Open CMD as administrator and enter the commands below to disable the service. [more info](https://github.com/SmtimesIWndr/gdid-reversal)
-- ``CDPSvc``
-
-  ```bat
-  reg add "HKLM\SYSTEM\CurrentControlSet\Services\CDPSvc" /v "Start" /t REG_DWORD /d "4" /f
-  ```
-  
-- ``CDPUserSvc``
-  
-  ```bat
-  reg add "HKLM\SYSTEM\CurrentControlSet\Services\CDPUserSvc" /v "Start" /t REG_DWORD /d "4" /f
-  ```
-
-> [!IMPORTANT]
-> To prevent unexpected breakage and problems due to service dependency errors, assess the other services that depend on the service you want to disable. This can be done by opening CMD as administrator then typing ``sc EnumDepend <service>`` which describes the services that rely on the service you want to disable. These services should be disabled to avoid dependency errors. If you can't disable them (e.g. because you need them), then you have no choice but to leave the service you wanted to disable initially enabled.
-  
+    ```  
 
 # Extras
 - [valleyofdoom](https://github.com/valleyofdoom/PC-Tuning)
