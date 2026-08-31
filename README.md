@@ -17,7 +17,7 @@ At the moment we are going to add a couple things, and as of now we are just goi
 - Windows Server may force you to enter a password which can be optionally be removed in later steps
 
 - If you are configuring Windows 11, press ``Shift+F10`` to open CMD, then type ``regedit`` to open the registy editor to add the registry entry below. This will allow us to continue without an internet connection by unlocking the ``continue with limited setup`` option as demonstrated in the video examples below. This removes the requirement to sign in with a Microsoft account which I highly advise against for privacy reasons generally speaking. After the registry entry has been applied, type ``shutdown /r /t 0`` in CMD to restart.
-- Second Option is typing ``start ms-cxh:localonly`` after ``Shift+F10`` in CMD when you see the "Let's connect you to a network" screen.
+- Second Option is typing ``start ms-cxh:localonly`` after ``Shift+F10`` in CMD when you see the "Let's connect you to a network" screen ([1](https://massgrave.dev/clean_install_windows#bypass-windows-11-internet-and-microsoft-account-requirements)).
 
     ```
     [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE]
