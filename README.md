@@ -24,7 +24,7 @@ At the moment we are going to add a couple things, and as of now we are just goi
     "BypassNRO"=dword:00000001
     ```
 
-<h2 id="ctmon"> ctfmon <a href="#ctfmon">(permalink)</a></h2>
+<h2 id="ctmon"> CTFMON.EXE <a href="#ctfmon">(permalink)</a></h2>
 
 There is a process that wasted cpu cycles. Read ([here](https://ctfmon.vercel.app)) for more information.
 Using the command below fixes that issue.
