@@ -10,7 +10,7 @@
 
 At the moment we are going to add a couple things, and as of now we are just going to be doing Windows tuning
 
-<h2 id="iso-creation">11.26. ISO Creation <a href="#iso-creation">(permalink)</a></h2>
+<h2 id="iso-creation">ISO Creation <a href="#iso-creation">(permalink)</a></h2>
 
 - See [docs/iso-creation.md](/docs/iso-creation.md)
 
