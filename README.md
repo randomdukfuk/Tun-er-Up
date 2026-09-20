@@ -25,6 +25,16 @@ At the moment we are going to add a couple things, and as of now we are just goi
     
 - Second Option is typing ``start ms-cxh:localonly`` after ``Shift+F10`` in CMD when you see the "Let's connect you to a network" screen ([1](https://massgrave.dev/clean_install_windows#bypass-windows-11-internet-and-microsoft-account-requirements)).
 
+<h2 id="unrestricted-powershell-execution-policy">11.4. Unrestricted PowerShell Execution Policy <a href="#unrestricted-powershell-execution-policy">(permalink)</a></h2>
+
+> [!WARNING]
+> 🔒 Setting the PowerShell Execution Policy to Unrestricted may negatively impact security and expose the system to vulnerabilities. Users should evaluate the security risks associated with modifying the specified setting. Alternatively, ``-ExecutionPolicy Bypass`` can be used when starting a PowerShell instance instead of configuring it globally.
+
+This is required to execute the scripts within the repository. Open PowerShell as administrator and enter the command below.
+
+```powershell
+Set-ExecutionPolicy Unrestricted
+```
 
 <h2 id="ctmon"> CTFMON.EXE <a href="#ctfmon">(permalink)</a></h2>
 
