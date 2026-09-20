@@ -1,10 +1,10 @@
-<h1 id="install-windows">10. Install Windows <a href="#install-windows">(permalink)</a></h1>
+<h1 id="install-windows">Install Windows <a href="#install-windows">(permalink)</a></h1>
 
-<h2 id="storage-partitions">10.1. Storage Partitions <a href="#storage-partitions">(permalink)</a></h2>
+<h2 id="storage-partitions">Storage Partitions <a href="#storage-partitions">(permalink)</a></h2>
 
 Set up a [multi-boot](https://en.wikipedia.org/wiki/Multi-booting) system to maintain separate environments for work/bloatware and gaming, ensuring the latter one remains free of bloatware. This allows you to keep the gaming partition clean and free of unnecessary software, as discussed in earlier sections. By doing so, you avoid installing bloatware on the same partition where you use real-time applications without sacrificing usability. To achieve this, shrink a volume in Disk Management ([instructions](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume)) to create unallocated space for installing the new operating system.
 
-<h2 id="what-version-of-windows-should-you-use">10.2. What Version of Windows Should You Use? <a href="#what-version-of-windows-should-you-use">(permalink)</a></h2>
+<h2 id="what-version-of-windows-should-you-use">What Version of Windows Should You Use? <a href="#what-version-of-windows-should-you-use">(permalink)</a></h2>
 
 This section contains important points to consider that have been collected over the years in regard to Windows versions, compatibility and exclusive features.
 
@@ -44,7 +44,7 @@ This section contains important points to consider that have been collected over
 
 - AllowTelemetry can be set to 0 on Windows Enterprise, Education, and Server editions ([1](https://gpsearch.azurewebsites.net:/Default.aspx?PolicyID=10937))
 
-<h2 id="downloading-and-preparing-a-stock-windows-iso">10.3. Downloading and Preparing a Stock Windows ISO <a href="#downloading-and-preparing-a-stock-windows-iso">(permalink)</a></h2>
+<h2 id="downloading-and-preparing-a-stock-windows-iso">Downloading and Preparing a Stock Windows ISO <a href="#downloading-and-preparing-a-stock-windows-iso">(permalink)</a></h2>
 
 In order to install Windows, an installation media must be created using an ISO file. Upon downloading ISOs, ensure to cross-check the hashes for the file with official sources to verify that it is genuine and not corrupted. Use the command ``certutil -hashfile <file>`` in CMD to obtain the hashes of the file.
 
@@ -53,7 +53,7 @@ Ensure to download an ISO that contains an edition with group policy support as 
 - Client editions: Professional
 - Server editions: Standard (Desktop Experience)
 
-<h2 id="iso-sources">10.4. ISO Sources <a href="#iso-sources">(permalink)</a></h2>
+<h2 id="iso-sources">ISO Sources <a href="#iso-sources">(permalink)</a></h2>
 
 - [massgrave.dev](https://massgrave.dev/genuine-installation-media)
 - [os.click](https://os.click)
@@ -61,7 +61,7 @@ Ensure to download an ISO that contains an edition with group policy support as 
 - [Adguard File List](https://files.rg-adguard.net)
 - [Fido](https://github.com/pbatard/Fido)
 
-<h2 id="iso-preparation">10.5. ISO Preparation <a href="#iso-preparation">(permalink)</a></h2>
+<h2 id="iso-preparation">ISO Preparation <a href="#iso-preparation">(permalink)</a></h2>
 
 <details>
 <summary>Windows 7</summary>
@@ -105,14 +105,14 @@ No additional steps are required for Windows 10+ versions. The latest updates ca
 > [!IMPORTANT]
 > The presence of OEMs keys can force the installation of specific editions of Windows editions (e.g. Home) which is explained in section [Downloading and Preparing a Stock Windows ISO](#downloading-and-preparing-a-stock-windows-iso). To circumvent this, you can either customize ``EI.cfg`` and ``PID.txt`` ([instructions](https://www.youtube.com/watch?v=R3yM3AV6q-8)) or remove every edition apart from the edition you would like to install using [NTLite](https://www.ntlite.com) or DISM in CLI ([instructions](/docs/image-customization.md)), however NTLite is more user-friendly.
 
-<h2 id="fetching-required-files">10.6. Fetching Required Files <a href="#fetching-required-files">(permalink)</a></h2>
+<h2 id="fetching-required-files">Fetching Required Files <a href="#fetching-required-files">(permalink)</a></h2>
 
 There are primarily two prerequisites before installing Windows. These can be done later if you are willing to fetch them from another system but I would recommend getting them now. Store these somewhere that you can access offline after installing Windows such as a USB storage device as the installation process consists of not being connected to a network in the initial steps.
 
 1. Download your NIC driver as it may not be packaged with Windows and must be installed in order to connect to a network
 2. The ``bin`` folder from this repository which can be downloaded [here](https://github.com/valleyofdoom/PC-Tuning/archive/refs/heads/main.zip)
 
-<h2 id="booting-into-the-iso">10.7. Booting Into the ISO <a href="#booting-into-the-iso">(permalink)</a></h2>
+<h2 id="booting-into-the-iso">Booting Into the ISO <a href="#booting-into-the-iso">(permalink)</a></h2>
 
 This section covers booting into the ISO retrieved and prepared in the previous section. For the next steps, you are required to disconnect the Ethernet cable and not be connected to the internet during the installation process. This will allow us to bypass the forced Microsoft login during OOBE, allowing us to use Windows with a local account along with preventing installation of unwanted updates and drivers. There are two options when it comes to installing Windows, installing using USB storage or using DISM (without USB storage). Either option can be used. If you want to remove your current operating system and wipe the entire drive, then you will have to install using USB storage because the latter requires dual-booting.
 
