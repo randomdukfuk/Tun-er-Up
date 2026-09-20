@@ -10,7 +10,11 @@
 
 At the moment we are going to add a couple things, and as of now we are just going to be doing Windows tuning
 
-<h2 id="iso-creation">ISO Creation <a href="#iso-creation">(permalink)</a></h2>
+<h1 id="physical-setup">Physical Setup <a href="#physical-setup">(permalink)</a></h1>
+
+<h1 id="biosuefi"> BIOS/UEFI <a href="#biosuefi">(permalink)</a></h1>
+
+<h2 id="iso-creation"> ISO Creation <a href="#iso-creation">(permalink)</a></h2>
 
 - See [docs/iso-creation.md](/docs/iso-creation.md)
 
