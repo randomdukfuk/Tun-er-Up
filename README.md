@@ -10,6 +10,99 @@
 
 At the moment we are going to add a couple things, and as of now we are just going to be doing Windows tuning
 
+<h2 id="booting-into-the-iso">10.7. Booting Into the ISO <a href="#booting-into-the-iso">(permalink)</a></h2>
+
+This section covers booting into the ISO retrieved and prepared in the previous section. For the next steps, you are required to disconnect the Ethernet cable and not be connected to the internet during the installation process. This will allow us to bypass the forced Microsoft login during OOBE, allowing us to use Windows with a local account along with preventing installation of unwanted updates and drivers. There are two options when it comes to installing Windows, installing using USB storage or using DISM (without USB storage). Either option can be used. If you want to remove your current operating system and wipe the entire drive, then you will have to install using USB storage because the latter requires dual-booting.
+
+<details>
+<summary>Option 1 -  Install using USB storage</summary>
+
+- Download [Ventoy](https://github.com/ventoy/Ventoy/releases) and launch ``Ventoy2Disk.exe``. Navigate to the option menu and select the correct partition style and disable Secure Boot support. The current partition style can be determined by typing ``msinfo32`` in ``Win+R``. Finally, select your USB storage and click install
+
+- Move your Windows ISO into the USB storage in File Explorer
+
+- If Secure Boot is enabled, temporarily disable it for the installation process. Boot into Ventoy on your USB in BIOS and select your Windows ISO. Once setup has finished, Secure Boot can be re-enabled if you had temporarily disabled it
+
+- On Windows 11 24H2+ use the previous version of setup ([example](https://schneegans.de/windows/no-8.3/24h2.png))
+
+- On the legacy language and keyboard selection page (not after this page as this won't work otherwise), prevent Windows setup restarting automatically so that 8dot3 names can be stripped properly as explained in the next steps by pressing ``Shift+F10`` to open CMD then type ``setup /NoReboot``. Continue with setup but don't restart at the end
+
+- When installing Windows 8 with a USB, you may be required to enter a key. Use the generic key ``GCRJD-8NW9H-F2CDX-CCM8D-9D6T9`` to bypass this step. This does not activate Windows
+
+- When installing Win11 with a USB, you may encounter system requirement issues. To bypass the checks, press ``Shift+F10`` to open CMD then type ``regedit`` and add the relevant registry keys listed below
+
+    ```
+    [HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig]
+    "BypassTPMCheck"=dword:00000001
+    "BypassRAMCheck"=dword:00000001
+    "BypassSecureBootCheck"=dword:00000001
+    ```
+
+- After the files are copied to the new partition and before restarting, you can prevent the creation and strip existing 8.3 character-length file names on the volume Windows was just installed to which aids performance and security ([1](https://web.archive.org/web/20200217151754/https://ttcshelbyville.wordpress.com/2018/12/02/should-you-disable-8dot3-for-performance-and-security)). This must be done now (before booting) to prevent file access errors as explained [here](https://schneegans.de/windows/no-8.3)
+
+  - Press ``Shift+F10`` to open CMD
+
+  - Determine the drive letter Windows was installed to by typing ``diskpart``, then type ``list volume`` and determine the correct drive letter. It will be a relatively large boot volume. Type ``exit`` to exit diskpart
+
+  - Disable the creation of 8.3 character-length file names. Replace ``<drive letter>`` with the correct drive letter (e.g. ``D:``)
+
+    ```bat
+    fsutil.exe 8dot3name set <drive letter> 1
+    ```
+
+  - Strip existing 8.3 character-length file names. Replace ``<drive letter>`` with the correct drive letter (e.g. ``D:``)
+
+    ```bat
+    fsutil.exe 8dot3name strip /s /f <drive letter>
+    ```
+
+  - Type ``wpeutil reboot`` to exit Windows setup and reboot
+
+</details>
+
+<details>
+<summary>Option 2 -  Install using DISM Apply-Image (without USB storage)</summary>
+
+- As this method requires specifying an existing partition to apply the ISO to, create a new partition by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) if you haven't already, then assign the newly created unallocated space a drive letter
+
+- Extract the ISO if required then run the command below to apply the image to a given partition. Replace ``<path\to\wim>`` with the path to the ``install.wim`` or ``install.esd`` (which is located in the ``sources`` folder of the extracted ISO) in each command
+
+  - Get all available editions and their corresponding indexes
+
+      ```bat
+      DISM /Get-WimInfo /WimFile:<path\to\wim>
+      ```
+
+  - Apply the image by replacing ``<index>`` with the index of the desired edition and ``<drive letter>`` with the drive letter you assigned in the previous step for the image to be mounted on (e.g. index ``1`` and drive letter ``D:``)
+
+      ```bat
+      DISM /Apply-Image /ImageFile:<path\to\wim> /Index:<index> /ApplyDir:<drive letter>
+      ```
+
+- Create the boot entry with the command below. Replace ``<windir>`` with the path to the mounted ``Windows`` directory (e.g. ``D:\Windows``)
+
+    ```bat
+    bcdboot <windir>
+    ```
+
+- After the files are copied to the new partition and before restarting, you can prevent the creation and strip existing 8.3 character-length file names on the volume Windows was just installed to which aids performance and security ([1](https://web.archive.org/web/20200217151754/https://ttcshelbyville.wordpress.com/2018/12/02/should-you-disable-8dot3-for-performance-and-security)). This must be done now (before booting) to prevent file access errors as explained [here](https://schneegans.de/windows/no-8.3)
+
+  - Disable the creation of 8.3 character-length file names. Replace ``<drive letter>`` with the correct drive letter (e.g. ``D:``). If the command below fails because the creation of 8dot3 names is globally disabled, first use ``fsutil 8dot3name set 2``, execute the command below, and then  disable it globally again with ``fsutil 8dot3name set 1``. This is only necessary if an error is displayed
+
+    ```bat
+    fsutil 8dot3name set <drive letter> 1
+    ```
+
+  - Strip existing 8.3 character-length file names. Replace ``<drive letter>`` with the correct drive letter (e.g. ``D:``)
+
+    ```bat
+    fsutil 8dot3name strip /s /f <drive letter>
+    ```
+
+- The installation process will finish after a system restart
+
+</details>
+
 <h1 id="configure-windows"> Configure Windows <a href="#configure-windows">(permalink)</a></h1>
 
 <h2 id="oobe-setup"> OOBE Setup <a href="#oobe-setup">(permalink)</a></h2>
