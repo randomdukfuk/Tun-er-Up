@@ -43,6 +43,12 @@ This is required to execute the scripts within the repository. Open PowerShell a
 ```powershell
 Set-ExecutionPolicy Unrestricted
 ```
+<h2 id="gdid"> GDID <a href="#gdid">(permalink)</a></h2>
+
+Could do this installing windows with no internet connection
+([1](https://github.com/SmtimesIWndr/gdid-reversal)), ([2](https://github.com/SmtimesIWndr/We-running-GDID-back))
+([script to disable](https://github.com/SmtimesIWndr/GDID-Disabler))
+
 
 <h2 id="ctmon"> CTFMON.EXE <a href="#ctfmon">(permalink)</a></h2>
 
