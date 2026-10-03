@@ -31,7 +31,7 @@ At the moment we are going to add a couple things, and as of now we are just goi
     "BypassNRO"=dword:00000001
     ```
     
-- Second Option, press ``Shift+F10`` to open CMD after you see the "Let's connect you to a network" screen, then type ``start ms-cxh:localonly``.([1](https://massgrave.dev/clean_install_windows#bypass-windows-11-internet-and-microsoft-account-requirements)).
+- Second Option, press ``Shift+F10`` to open CMD after you see the "Let's connect you to a network" screen, then type ``start ms-cxh:localonly``([1](https://massgrave.dev/clean_install_windows#bypass-windows-11-internet-and-microsoft-account-requirements)).
 
 <h2 id="unrestricted-powershell-execution-policy"> Unrestricted PowerShell Execution Policy <a href="#unrestricted-powershell-execution-policy">(permalink)</a></h2>
 
