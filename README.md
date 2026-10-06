@@ -33,7 +33,7 @@ At the moment we are going to add a couple things, and as of now we are just goi
     
 - Second Option, press ``Shift+F10`` to open CMD after you see the "Let's connect you to a network" screen, then type ``start ms-cxh:localonly``([1](https://massgrave.dev/clean_install_windows#bypass-windows-11-internet-and-microsoft-account-requirements)).
 
-<h2 id="file-system">11.2. File System <a href="#file-system">(permalink)</a></h2>
+<h2 id="file-system"> File System <a href="#file-system">(permalink)</a></h2>
 
 Open CMD as administrator and enter the commands below.
 
@@ -57,7 +57,7 @@ Open CMD as administrator and enter the commands below.
     fsutil behavior set disablelastaccess 1
     ```
 
-<h2 id="user-account-control">11.3. User Account Control <a href="#user-account-control">(permalink)</a></h2>
+<h2 id="user-account-control"> User Account Control <a href="#user-account-control">(permalink)</a></h2>
 
 Set the User Account Control (UAC) setting to "Always notify" (highest level) by typing ``useraccountcontrolsettings`` in ``Win+R``. This reduces the risk of a malicious program bypassing UAC, which can occur with the default setting ([1](https://devblogs.microsoft.com/oldnewthing/20160816-00/?p=94105), [2](https://github.com/hfiref0x/UACME#system-requirements)).
 
@@ -72,11 +72,11 @@ This is required to execute the scripts within the repository. Open PowerShell a
 Set-ExecutionPolicy Unrestricted
 ```
 
-<h2 id="importing-bin-folder">11.5. Importing bin Folder <a href="#importing-bin-folder">(permalink)</a></h2>
+<h2 id="importing-bin-folder"> Importing bin Folder <a href="#importing-bin-folder">(permalink)</a></h2>
 
 Move the ``bin`` folder that you downloaded prior to installing Windows to the ``C:`` drive as outlined in section [Fetching Required Files](#fetching-required-files). If you haven't downloaded it yet, you will need to fetch it from another system as you don't have network access at this stage. The complete path should be ``C:\bin``.
 
-<h2 id="process-mitigations-windows-10-1709">11.6. Process Mitigations (Windows 10 1709+) <a href="#process-mitigations-windows-10-1709">(permalink)</a></h2>
+<h2 id="process-mitigations-windows-10-1709"> Process Mitigations (Windows 10 1709+) <a href="#process-mitigations-windows-10-1709">(permalink)</a></h2>
 
 > [!WARNING]
 > 🔒 Disabling process mitigations may negatively impact security and expose the system to vulnerabilities. Users should evaluate the security risks associated with modifying the specified setting.
