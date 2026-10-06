@@ -33,6 +33,34 @@ At the moment we are going to add a couple things, and as of now we are just goi
     
 - Second Option, press ``Shift+F10`` to open CMD after you see the "Let's connect you to a network" screen, then type ``start ms-cxh:localonly``([1](https://massgrave.dev/clean_install_windows#bypass-windows-11-internet-and-microsoft-account-requirements)).
 
+<h2 id="file-system">11.2. File System <a href="#file-system">(permalink)</a></h2>
+
+Open CMD as administrator and enter the commands below.
+
+- Disable the creation of 8.3 character-length file names on FAT and NTFS-formatted volumes which aids performance and security ([1](https://web.archive.org/web/20200217151754/https://ttcshelbyville.wordpress.com/2018/12/02/should-you-disable-8dot3-for-performance-and-security))
+
+  - Disable the creation of 8.3 character-length file names
+
+    ```bat
+    fsutil 8dot3name set 1
+    ```
+
+  - If the steps carried out in section [Booting Into the ISO](#booting-into-the-iso) to strip 8dot3 names was followed correctly, the command below should display a value close to 0 for "total 8dot3 names found"
+
+    ```bat
+    fsutil 8dot3name scan /s C:
+    ```
+
+- Disable updates to the Last Access Time stamp on each directory when directories are listed on an NTFS volume. Disabling the Last Access Time feature improves the speed of file and directory access ([1](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-behavior#remarks)). Beware that this may affect backup and remote storage programs as per the official remarks ([1](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-behavior#remarks))
+
+    ```bat
+    fsutil behavior set disablelastaccess 1
+    ```
+
+<h2 id="user-account-control">11.3. User Account Control <a href="#user-account-control">(permalink)</a></h2>
+
+Set the User Account Control (UAC) setting to "Always notify" (highest level) by typing ``useraccountcontrolsettings`` in ``Win+R``. This reduces the risk of a malicious program bypassing UAC, which can occur with the default setting ([1](https://devblogs.microsoft.com/oldnewthing/20160816-00/?p=94105), [2](https://github.com/hfiref0x/UACME#system-requirements)).
+
 <h2 id="unrestricted-powershell-execution-policy"> Unrestricted PowerShell Execution Policy <a href="#unrestricted-powershell-execution-policy">(permalink)</a></h2>
 
 > [!WARNING]
