@@ -71,6 +71,21 @@ This is required to execute the scripts within the repository. Open PowerShell a
 ```powershell
 Set-ExecutionPolicy Unrestricted
 ```
+
+<h2 id="importing-bin-folder">11.5. Importing bin Folder <a href="#importing-bin-folder">(permalink)</a></h2>
+
+Move the ``bin`` folder that you downloaded prior to installing Windows to the ``C:`` drive as outlined in section [Fetching Required Files](#fetching-required-files). If you haven't downloaded it yet, you will need to fetch it from another system as you don't have network access at this stage. The complete path should be ``C:\bin``.
+
+<h2 id="process-mitigations-windows-10-1709">11.6. Process Mitigations (Windows 10 1709+) <a href="#process-mitigations-windows-10-1709">(permalink)</a></h2>
+
+> [!WARNING]
+> 🔒 Disabling process mitigations may negatively impact security and expose the system to vulnerabilities. Users should evaluate the security risks associated with modifying the specified setting.
+
+> [!CAUTION]
+> 📊 **Do NOT** blindly follow the recommendations in this section. **Do** benchmark the specified changes to ensure they result in positive performance scaling, as every system behaves differently and changes could unintentionally degrade performance ([instructions](#benchmarking)).
+
+There are several OS-level mitigations ([1](https://learn.microsoft.com/en-us/powershell/module/processmitigations/set-processmitigation?view=windowsserver2019-ps#-disable)) that are enabled by default and may impact performance. If desired, these can be disabled in Windows Defender's "Exploit Protection" page. It should be apparent that disabling mitigations reduces security. This step is carried out now as if you choose to disable Windows Defender in the next steps, the interface will no longer be accessible however they can be toggled using the [Get-ProcessMitigation](https://learn.microsoft.com/en-us/powershell/module/processmitigations/get-processmitigation?view=windowsserver2022-ps) and [Set-ProcessMitigation](https://learn.microsoft.com/en-us/powershell/module/processmitigations/set-processmitigation?view=windowsserver2019-ps) commands in PowerShell. Some programs may require mitigations to be enabled and will break if they are disabled so proceed with caution.
+
 <h2 id="gdid"> GDID <a href="#gdid">(permalink)</a></h2>
 
 Could do this installing windows with no internet connection
