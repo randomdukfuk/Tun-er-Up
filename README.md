@@ -45,7 +45,7 @@ Open CMD as administrator and enter the commands below.
     fsutil 8dot3name set 1
     ```
 
-  - If the steps carried out in section [Booting Into the ISO](#booting-into-the-iso) to strip 8dot3 names was followed correctly, the command below should display a value close to 0 for "total 8dot3 names found"
+  - If the steps carried out in section [Booting Into the ISO](https://github.com/randomdukfuk/Tun-er-Up/blob/main/docs/iso-creation.md#booting-into-the-iso) to strip 8dot3 names was followed correctly, the command below should display a value close to 0 for "total 8dot3 names found"
 
     ```bat
     fsutil 8dot3name scan /s C:
